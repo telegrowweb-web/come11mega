@@ -37,7 +37,8 @@
       --dark:#010a06;
       --bdr: rgba(0,229,255,0.18);
       --txt: #e0fff8;
-      --mut: #1a5a4a;
+      /* FIX: was #1a5a4a (dark green = invisible on dark bg). Now light muted teal. */
+      --mut: #8ecfbf;
     }
 
     html, body {
@@ -48,7 +49,6 @@
       overflow: hidden;
     }
 
-    /* ── BG ── */
     .bg {
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background:
@@ -57,7 +57,6 @@
         radial-gradient(ellipse at 55% 45%,  rgba(0,40,30,0.95)    0%, transparent 70%);
     }
 
-    /* ── CRICKET PITCH LINES BG ── */
     .pitch-lines {
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image:
@@ -68,7 +67,6 @@
     }
     @keyframes pitchShift { 0%{background-position:0 0} 100%{background-position:38px 38px} }
 
-    /* ── DOT TEXTURE ── */
     .texture {
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
       background-image: radial-gradient(circle, rgba(198,255,0,0.06) 1px, transparent 1px);
@@ -77,7 +75,6 @@
     }
     @keyframes texDrift { 0%{background-position:0 0} 100%{background-position:20px 20px} }
 
-    /* ── SCAN LINE ── */
     .scan {
       position: fixed; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, rgba(198,255,0,0.5), rgba(0,229,255,0.5), transparent);
@@ -88,14 +85,12 @@
       0%  {top:-2px;opacity:0;} 5%{opacity:1;} 95%{opacity:.3;} 100%{top:100%;opacity:0;}
     }
 
-    /* ── ORBS ── */
     .orb {position:fixed;border-radius:50%;filter:blur(85px);z-index:0;pointer-events:none;}
     .orb1{width:320px;height:320px;background:rgba(0,200,100,0.15);  top:-90px; right:-70px;animation:orbF 11s ease-in-out infinite alternate;}
     .orb2{width:240px;height:240px;background:rgba(0,229,255,0.11);  bottom:-70px;left:-50px;animation:orbF 14s ease-in-out infinite alternate-reverse;}
     .orb3{width:160px;height:160px;background:rgba(198,255,0,0.08);  top:40%; right:-35px; animation:orbF 9s ease-in-out infinite alternate;}
     @keyframes orbF{0%{transform:translate(0,0) scale(1)}100%{transform:translate(14px,18px) scale(1.08)}}
 
-    /* ── PARTICLES ── */
     .particles{position:fixed;inset:0;z-index:0;pointer-events:none;}
     .p{position:absolute;border-radius:50%;animation:pUp linear infinite;opacity:0;}
     .p1{width:3px;height:3px;background:var(--lime);left:6%; top:22%;animation-duration:7s; animation-delay:0s;}
@@ -112,9 +107,6 @@
       100%{opacity:0;transform:translateY(-65px) scale(1.2);}
     }
 
-    /* ════════════════════════════════
-       PAGE
-    ════════════════════════════════ */
     .page {
       position:relative;z-index:1;
       height:100vh;
@@ -124,7 +116,6 @@
       overflow:hidden;gap:0;
     }
 
-    /* ── HEADER ── */
     .hdr {
       display:flex;align-items:center;gap:8px;
       margin-bottom:13px;
@@ -141,7 +132,6 @@
       text-transform:uppercase;opacity:.9;white-space:nowrap;
     }
 
-    /* ── LOGO ── */
     .logo-link{text-decoration:none;display:block;}
     .logo-section{
       display:flex;flex-direction:column;align-items:center;
@@ -149,7 +139,6 @@
     }
     .logo-outer{position:relative;width:112px;height:112px;}
 
-    /* Conic ring — lime + cyan */
     .lr1{
       position:absolute;inset:-6px;border-radius:50%;
       border:2.5px solid transparent;
@@ -177,14 +166,12 @@
     }
     .l-img img{width:100%;height:100%;object-fit:cover;}
 
-    /* Corner dots */
     .ldot{position:absolute;width:7px;height:7px;border-radius:50%;}
     .ld1{top:-2px;   left:50%; transform:translateX(-50%);background:var(--lime);box-shadow:0 0 10px var(--lime);}
     .ld2{bottom:-2px;left:50%; transform:translateX(-50%);background:var(--c1); box-shadow:0 0 10px var(--c1);}
     .ld3{left:-2px;  top:50%;  transform:translateY(-50%);background:var(--gold);box-shadow:0 0 10px var(--gold);}
     .ld4{right:-2px; top:50%;  transform:translateY(-50%);background:var(--grn); box-shadow:0 0 10px var(--grn);}
 
-    /* Trophy badge */
     .trophy-badge{
       position:absolute;bottom:2px;right:2px;
       width:28px;height:28px;border-radius:50%;
@@ -194,7 +181,6 @@
       box-shadow:0 2px 12px rgba(255,214,0,.6);
     }
 
-    /* Name tag */
     .name-row{
       margin-top:12px;
       display:flex;align-items:center;gap:7px;
@@ -208,7 +194,6 @@
       color:var(--lime);text-transform:uppercase;
     }
 
-    /* ── TITLE ── */
     .title-link{text-decoration:none;display:block;width:100%;}
     .title-wrap{
       text-align:center;margin-top:13px;
@@ -216,7 +201,8 @@
     }
     .pre-lbl{
       font-size:8.5px;font-weight:600;
-      letter-spacing:.36em;color:var(--mut);
+      letter-spacing:.36em;
+      color:var(--mut); /* now #8ecfbf — clearly visible */
       text-transform:uppercase;margin-bottom:4px;
     }
     h1{
@@ -231,13 +217,13 @@
     .tagline{
       margin-top:6px;
       font-size:clamp(10px,2.2vw,12.5px);
-      color:var(--mut);font-weight:400;
+      color:var(--mut); /* now #8ecfbf — clearly visible */
+      font-weight:400;
       letter-spacing:.03em;line-height:1.6;
     }
     .tagline .hi {color:var(--lime);font-weight:700;}
     .tagline .hi2{color:var(--gold);font-weight:700;}
 
-    /* ── CRORE WINNER BANNER ── */
     .crore-banner{
       text-decoration:none;display:block;
       width:100%;max-width:340px;
@@ -255,9 +241,8 @@
     .cb-icon{font-size:22px;flex-shrink:0;}
     .cb-txt{text-align:left;}
     .cb-txt b{display:block;font-size:13px;font-weight:800;color:var(--lime);letter-spacing:.04em;}
-    .cb-txt span{font-size:10px;color:var(--mut);font-weight:500;}
+    .cb-txt span{font-size:10px;color:var(--mut);font-weight:500;} /* now clearly visible */
 
-    /* ── STATS ── */
     .stats-link{
       text-decoration:none;display:block;
       width:100%;max-width:340px;
@@ -285,9 +270,8 @@
     .sv2{color:var(--gold);}
     .sv3{color:var(--c1);}
     .sv4{color:var(--grn);}
-    .sc-l{font-size:7.5px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;}
+    .sc-l{font-size:7.5px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;} /* now clearly visible */
 
-    /* ── FEATURE PILLS ── */
     .pills{
       display:flex;flex-wrap:wrap;gap:6px;
       justify-content:center;width:100%;
@@ -311,7 +295,6 @@
     .pd-g{background:var(--gold);box-shadow:0 0 6px var(--gold);}
     .pd-n{background:var(--grn); box-shadow:0 0 6px var(--grn);}
 
-    /* ── CTA BUTTON ── */
     .cta-wrap{
       width:100%;max-width:340px;
       margin-top:14px;
@@ -347,11 +330,11 @@
     .tg{width:18px;height:18px;flex-shrink:0;}
     .tg path{fill:#010a06;}
 
-    /* Credit */
     .credit{
       position:fixed;bottom:9px;left:0;right:0;
       text-align:center;font-size:11px;
-      color:var(--mut);z-index:100;letter-spacing:.03em;
+      color:var(--mut); /* now clearly visible */
+      z-index:100;letter-spacing:.03em;
     }
     .credit a{color:var(--lime);text-decoration:none;font-weight:700;}
     .credit a:hover{text-decoration:underline;}
@@ -361,9 +344,6 @@
       to  {opacity:1;transform:translateY(0);}
     }
 
-    /* ════════════════════════════════
-       PHONE ≤ 480px
-    ════════════════════════════════ */
     @media(max-width:480px){
       html,body{overflow:hidden;}
       .page{padding:14px 18px 26px;justify-content:center;gap:0;}
@@ -372,7 +352,6 @@
       .hdr-txt{font-size:8.5px;letter-spacing:.36em;}
       .hdr-line{max-width:34px;}
 
-      /* Logo BIGGER on phone */
       .logo-outer{width:108px;height:108px;}
       .trophy-badge{width:26px;height:26px;font-size:13px;}
       .name-row{margin-top:11px;}
@@ -400,7 +379,6 @@
       .cta-wrap{margin-top:13px;max-width:100%;padding:0 2px;}
       .btn{font-size:14.5px;padding:14px 18px;letter-spacing:.1em;border-radius:10px;}
 
-      /* BIGGER texture on phone */
       .texture{
         background-image:radial-gradient(circle, rgba(198,255,0,0.10) 1.5px, transparent 1.5px);
         background-size:16px 16px;
@@ -430,7 +408,6 @@
       .name-row{margin-top:9px;}
     }
 
-    /* LAPTOP ≥ 768px */
     @media(min-width:768px){
       .page{padding:20px 36px 26px;}
 
@@ -490,14 +467,12 @@
 
   <main class="page">
 
-    <!-- Header — LINKED -->
     <a href="https://t.me/+fclob_J_KFU2Mjg9" target="_blank" rel="noopener" class="hdr">
       <div class="hdr-line"></div>
       <div class="hdr-txt">🏏 &nbsp; Fantasy Cricket Experts &nbsp; 🏏</div>
       <div class="hdr-line"></div>
     </a>
 
-    <!-- Logo — LINKED -->
     <a href="https://t.me/+fclob_J_KFU2Mjg9" target="_blank" rel="noopener" class="logo-link">
       <div class="logo-section">
         <div class="logo-outer">
@@ -522,7 +497,6 @@
       </div>
     </a>
 
-    <!-- Title — LINKED -->
     <a href="https://t.me/+fclob_J_KFU2Mjg9" target="_blank" rel="noopener" class="title-link">
       <div class="title-wrap">
         <div class="pre-lbl">— #1 Fantasy Cricket GL Team —</div>
@@ -534,7 +508,6 @@
       </div>
     </a>
 
-    <!-- 115 Crore Banner — LINKED -->
     <a href="https://t.me/+fclob_J_KFU2Mjg9" target="_blank" rel="noopener" class="crore-banner">
       <div class="cb-inner">
         <span class="cb-icon">🥳</span>
@@ -545,8 +518,7 @@
       </div>
     </a>
 
-    <!-- Stats — LINKED -->
-    <a href="" target="_blank" rel="noopener" class="stats-link">
+    <a href="https://t.me/+fclob_J_KFU2Mjg9" target="_blank" rel="noopener" class="stats-link">
       <div class="stats-row">
         <div class="sc"><div class="sc-v sv1">14K+</div><div class="sc-l">Members</div></div>
         <div class="sc"><div class="sc-v sv2">115 Cr+</div><div class="sc-l">Winners</div></div>
@@ -555,15 +527,13 @@
       </div>
     </a>
 
-    <!-- Pills — each LINKED -->
     <div class="pills">
-      <a href="" target="_blank" rel="noopener" class="pill"><div class="pd pd-l"></div>Mega GL Teams</a>
-      <a href="" target="_blank" rel="noopener" class="pill"><div class="pd pd-c"></div>Match Predictions</a>
-      <a href="" target="_blank" rel="noopener" class="pill"><div class="pd pd-g"></div>Fantasy Tips</a>
-      <a href="" target="_blank" rel="noopener" class="pill"><div class="pd pd-n"></div>Daily Updates</a>
+      <a href="https://t.me/+fclob_J_KFU2Mjg9" target="_blank" rel="noopener" class="pill"><div class="pd pd-l"></div>Mega GL Teams</a>
+      <a href="https://t.me/+fclob_J_KFU2Mjg9" target="_blank" rel="noopener" class="pill"><div class="pd pd-c"></div>Match Predictions</a>
+      <a href="https://t.me/+fclob_J_KFU2Mjg9" target="_blank" rel="noopener" class="pill"><div class="pd pd-g"></div>Fantasy Tips</a>
+      <a href="https://t.me/+fclob_J_KFU2Mjg9" target="_blank" rel="noopener" class="pill"><div class="pd pd-n"></div>Daily Updates</a>
     </div>
 
-    <!-- CTA — LINKED -->
     <div class="cta-wrap">
       <a href="https://t.me/+fclob_J_KFU2Mjg9" target="_blank" rel="noopener" class="btn">
         <span class="btn-inner">
